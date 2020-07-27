@@ -1,0 +1,9 @@
+# action.yml
+name: 'PHPLint'
+description: 'Run PHP lint on PR'
+outputs:
+  pass: # if code ok
+    description: 'Codes passes linter'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
