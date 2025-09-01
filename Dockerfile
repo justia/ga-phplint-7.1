@@ -9,7 +9,10 @@ LABEL version="0.0.1"
 LABEL repository="https://github.com/justia/ga-phplint-7.1"
 LABEL homepage="https://github.com/justia/ga-phplint-7.1"
 
-RUN apt-get update && apt-get -y install zip unzip
+RUN sed -i 's|deb.debian.org|archive.debian.org|g' /etc/apt/sources.list \
+ && sed -i '/security.debian.org/d' /etc/apt/sources.list \
+ && apt-get update \
+ && apt-get -y install zip unzip
 
 RUN curl -sS https://getcomposer.org/installer | php -- \
 --install-dir=/usr/bin --filename=composer && chmod +x /usr/bin/composer
